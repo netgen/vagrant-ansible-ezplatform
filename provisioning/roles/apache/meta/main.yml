@@ -1,0 +1,15 @@
+---
+galaxy_info:
+  author: Srdjan Vranac
+  description: Role to setup apache for EzPublish
+  company: Code4Hire Kft.
+  min_ansible_version: 1.5
+  platforms:
+  - name: Ubuntu
+    versions:
+    - trusty
+  categories:
+  - development
+  - system
+  - web
+dependencies: []

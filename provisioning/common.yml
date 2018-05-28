@@ -1,0 +1,42 @@
+---
+- hosts: all
+  become: yes
+  vars:
+      ansible_python_interpreter: "/usr/bin/python3"
+  # You should remember this from my puppet rants
+  # Execute the apt-get update only if it was last executed more than 12 hours ago
+  pre_tasks:
+    - name: enable multiverse repo and multiverse security updates
+      apt_repository: repo="{{item}}" update_cache=no
+      when: ansible_os_family == "Debian"
+      with_items:
+        - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} multiverse'
+        - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} multiverse'
+        - 'deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates multiverse'
+        - 'deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates multiverse'
+        - 'deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security multiverse'
+        - 'deb-src http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security multiverse'
+    - name: check apt last update
+      stat: path=/var/cache/apt
+      register: apt_cache_stat
+      when: ansible_os_family == "Debian"
+    - name: update apt if needed
+      apt: update_cache=yes
+      when: ansible_os_family == "Debian" and ansible_date_time.epoch|float - apt_cache_stat.stat.mtime > 60*60*12
+    # the oh so very important bit if you are going to add apt repos
+    - name: install python-pycurl
+      apt: pkg=python-pycurl state=latest
+      when: ansible_os_family == "Debian"
+    - name: create project root
+      file: path={{PROJECT_ROOT}} state=directory owner=vagrant group=vagrant
+      ignore_errors: True
+    - name: Set default folder to /var/www/ezpublish
+      lineinfile: dest=/home/vagrant/.bashrc state=present insertafter=EOF line="cd /var/www/ezpublish"
+
+  roles:
+    - common
+#    - { role: apache, use_htaccess: false }
+    - { role: 'nginx', tags: 'nginx' }
+    - ezfind-solr
+
+  tasks:

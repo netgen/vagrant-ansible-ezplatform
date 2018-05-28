@@ -1,0 +1,10 @@
+---
+# vars file for mailcatcher
+
+mailcatcher_packages:
+  - build-essential
+  - sqlite3
+  - libsqlite3-dev
+  - ruby2.2
+  - ruby2.2-dev
+  - ruby-switch

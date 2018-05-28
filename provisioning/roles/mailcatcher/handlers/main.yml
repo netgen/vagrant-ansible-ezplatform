@@ -1,0 +1,13 @@
+---
+# handlers file for mailcatcher
+- name: start mailcatcher
+  service: name=mailcatcher state=started
+  become: yes
+
+- name: stop mailcatcher
+  service: name=mailcatcher state=stopped
+  become: yes
+
+- name: restart mailcatcher
+  service: name=mailcatcher state=restarted
+  become: yes

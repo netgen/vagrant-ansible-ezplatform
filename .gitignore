@@ -1,0 +1,5 @@
+.idea/
+.vagrant/
+ezpublish/
+.DS_Store
+Vagrantfile
