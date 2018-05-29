@@ -20,14 +20,6 @@
   notify: reload nginx
   tags: [nginx]
 
-- name: create vhost root directory
-  file:
-    path: "{{ PROJECT_ROOT }}/{{ PROJECT_NAME }}/web"
-    state: directory
-    owner: root
-    group: root
-    mode: 0755
-
 - name: create vhost symlink
   file:
     src: "/etc/nginx/sites-available/{{ PROJECT_NAME }}.conf"
