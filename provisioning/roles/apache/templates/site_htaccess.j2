@@ -7,9 +7,9 @@
     {% if HOST_ALIAS %}
     ServerAlias {{ HOST_ALIAS }}
     {% endif %}
-    DocumentRoot {{ PROJECT_ROOT }}/web
+    DocumentRoot {{ PROJECT_ROOT }}/{{ PROJECT_NAME }}/web
 
-    <Directory {{ PROJECT_ROOT }}/web/>
+    <Directory {{ PROJECT_ROOT }}/{{ PROJECT_NAME }}/web/>
         AllowOverride All
         Require all granted
     </Directory>
