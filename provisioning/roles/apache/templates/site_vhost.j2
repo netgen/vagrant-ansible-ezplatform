@@ -11,7 +11,7 @@
     {% if HOST_ALIAS %}
     ServerAlias {{ HOST_ALIAS }}
     {% endif %}
-    DocumentRoot {{ PROJECT_ROOT }}/web
+    DocumentRoot {{ PROJECT_ROOT }}/{{ PROJECT_NAME }}/web
     DirectoryIndex app.php
 
     # Request size limit in bytes, 0 to disable
@@ -24,7 +24,7 @@
     # LogLevel debug
 
     # "web" folder is what we expose to the world, all rewrite rules further down is relative to it.
-    <Directory {{ PROJECT_ROOT }}/web>
+    <Directory {{ PROJECT_ROOT }}/{{ PROJECT_NAME }}/web>
         # If using php configured in FastCGI mode, you might also need to add "ExecCGI" to the line below
         Options FollowSymLinks
         AllowOverride None
@@ -142,6 +142,6 @@
     #     </LocationMatch>
     # </IfModule>
 
-    ErrorLog ${APACHE_LOG_DIR}/ezpublish-error.log
-    CustomLog ${APACHE_LOG_DIR}/ezpublish-access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/application-error.log
+    CustomLog ${APACHE_LOG_DIR}/application-access.log combined
 </VirtualHost>

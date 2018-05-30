@@ -1,7 +1,7 @@
 ---
-# vars file for common
+# vars file for yarn
 
-common_packages:
+yarn_packages:
   - gcc
   - curl
   - make
@@ -12,7 +12,7 @@ common_packages:
   - build-essential
   - wget
   - python3-software-properties
-  - software-properties-common
+  - software-properties-yarn
   - unzip
   - tmux
   - ntp

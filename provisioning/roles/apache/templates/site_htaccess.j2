@@ -7,9 +7,9 @@
     {% if HOST_ALIAS %}
     ServerAlias {{ HOST_ALIAS }}
     {% endif %}
-    DocumentRoot {{ PROJECT_ROOT }}/web
+    DocumentRoot {{ PROJECT_ROOT }}/{{ PROJECT_NAME }}/web
 
-    <Directory {{ PROJECT_ROOT }}/web/>
+    <Directory {{ PROJECT_ROOT }}/{{ PROJECT_NAME }}/web/>
         AllowOverride All
         Require all granted
     </Directory>
@@ -18,6 +18,6 @@
         Options -Indexes
     </Location>
 
-    ErrorLog ${APACHE_LOG_DIR}/ezpublish-error.log
-    CustomLog ${APACHE_LOG_DIR}/ezpublish-access.log combined
+    ErrorLog ${APACHE_LOG_DIR}/application-error.log
+    CustomLog ${APACHE_LOG_DIR}/application-access.log combined
 </VirtualHost>

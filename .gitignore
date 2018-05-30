@@ -1,5 +1,6 @@
 .idea/
 .vagrant/
-ezpublish/
+application/
 .DS_Store
 Vagrantfile
+*.log
