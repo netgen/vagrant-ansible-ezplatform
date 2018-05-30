@@ -3,3 +3,4 @@
 application/
 .DS_Store
 Vagrantfile
+*.log
