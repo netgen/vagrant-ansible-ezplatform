@@ -76,7 +76,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.vm.provision "ansible" do |ansible|
       ansible.playbook = "provisioning/vagrant.yml"
       # output as much as you can, or comment this out for silence
-      ansible.verbose = "vvvv"
       ansible.become = true
     end
   end
