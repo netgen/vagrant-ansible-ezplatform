@@ -24,6 +24,7 @@ php_packages:
   - php{{ PROJECT_PHP_VERSION }}-memcached
   - php{{ PROJECT_PHP_VERSION }}-mbstring
   - php{{ PROJECT_PHP_VERSION }}-bcmath
+  - php{{ PROJECT_PHP_VERSION }}-sqlite3
 
 php_xdebug:
   - php{{ PROJECT_PHP_VERSION }}-xdebug
