@@ -22,6 +22,8 @@ common_packages:
   - libreadline-dev
   - ncurses-dev
   - python-dev
+  - libmysqlclient-dev
+  - python-mysqldb
   - libpq-dev
   - apt-transport-https
   - acl
