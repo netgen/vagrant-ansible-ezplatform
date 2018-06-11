@@ -9,12 +9,8 @@
   when: ansible_os_family == "Debian"
   tags: [packages]
 
-- name: Set timezone variables
-  copy: content="{{ PROJECT_TIMEZONE }}"
-        dest="{{ timezone_destination_path }}"
-        owner=root
-        group=root
-        mode=0644
-        backup=yes
+- name: Set the timezone
+  command: timedatectl set-timezone {{ PROJECT_TIMEZONE }}
+  become: yes
   notify:
     - update timezone
