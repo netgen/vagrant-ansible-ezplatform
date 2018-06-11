@@ -1,7 +1,7 @@
-vagrant-ansible-ezpublish
-=========================
+vagrant-ansible-ezplatform
+==========================
 
-Vagrant box, with Ansible provisioning to setup new eZ Publish project.
+Vagrant box, with Ansible provisioning to setup a new eZ Platform project.
 
 ## Authors
 
