@@ -10,7 +10,7 @@
     state: present
 
 - name: Install Varnish.
-  apt: name=varnish state=installed
+  apt: name=varnish state=present
 
 - name: create systemd override directory
   file:
