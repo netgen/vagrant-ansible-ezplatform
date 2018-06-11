@@ -4,18 +4,18 @@
 // For additional example see: doc/docker/entrypoint/varnish/parameters.vcl
 
 backend ezplatform {
-    .host = "127.0.0.1";
-    .port = "80";
+    .host = "{{ VARNISH_DEFAULT_BACKEND_HOST }}";
+    .port = "{{ VARNISH_DEFAULT_BACKEND_PORT }}";
 }
 
 // ACL for invalidators IP
 acl invalidators {
     "127.0.0.1";
-    "192.168.0.0"/16;
+    "{{ VARNISH_ADMIN_SUBNET }}"/{{ VARNISH_ADMIN_SUBNET_NETMASK }};
 }
 
 // ACL for debuggers IP
 acl debuggers {
     "127.0.0.1";
-    "192.168.0.0"/16;
+    "{{ VARNISH_ADMIN_SUBNET }}"/{{ VARNISH_ADMIN_SUBNET_NETMASK }};
 }
