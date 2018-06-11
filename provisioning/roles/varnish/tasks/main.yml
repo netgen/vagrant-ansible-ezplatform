@@ -37,11 +37,6 @@
         mode=0644
   notify: restart varnish
 
-- name: Copy Varnish default VCL.
-  copy: src="parameters.vcl"
-        dest="{{ VARNISH_CONFIG_PATH }}/parameters.vcl"
-        backup=yes
-        owner=root
-        group=root
-        mode=0644
+- name: Copy Varnish parameters VCL.
+  template: src=parameters.vcl.j2 dest="{{ VARNISH_CONFIG_PATH }}/parameters.vcl" owner=root group=root mode=0644
   notify: restart varnish
