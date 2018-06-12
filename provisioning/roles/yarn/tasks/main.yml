@@ -1,8 +1,5 @@
 ---
 
-- name: Add the OS specific varibles
-  include_vars: "{{ ansible_os_family }}.yml"
-
 - name: Make sure cmdtest is removed
   apt: name="cmdtest" state=absent
   when: ansible_os_family == "Debian"
