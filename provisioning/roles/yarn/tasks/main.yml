@@ -5,14 +5,14 @@
   when: ansible_os_family == "Debian"
   tags: [packages]
 
-- name: Add the yarn signing keys
+- name: Add Yarn signing keys
   apt_key: url=https://dl.yarnpkg.com/debian/pubkey.gpg
 
-- name: Add yarn repo
+- name: Add Yarn repo
   apt_repository: repo='deb https://dl.yarnpkg.com/debian/ stable main' state=present update_cache=yes
   when: ansible_os_family == "Debian"
 
-- name: Install the yarn tools (APT)
+- name: Install Yarn
   apt: name="yarn" state=present update_cache=yes
   when: ansible_os_family == "Debian"
   tags: [packages]
