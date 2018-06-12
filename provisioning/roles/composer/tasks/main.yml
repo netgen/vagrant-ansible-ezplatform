@@ -6,6 +6,8 @@
          creates=/usr/local/bin/composer
   when: ansible_os_family == "Debian"
   tags: [packages,composer]
+  args:
+      warn: false
 
 - name: Check the composer installation
   command: composer -V --no-ansi
