@@ -1,6 +1,6 @@
 ---
 # tasks file for rabbitmq
-- name: Add the Nodesource signing keys
+- name: Add the RabbitMQ signing keys
   apt_key: url=https://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0x6B73A36E6026DFCA state=present id="6026DFCA"
 
 - name: add RabbitMQ repo

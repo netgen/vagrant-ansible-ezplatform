@@ -3,7 +3,7 @@
 - name: Add the Nodesource signing keys
   apt_key: url=https://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0x1655A0AB68576280 state=present id="68576280"
 
-- name: Add Nodesource repo (formerly known as Chris Lea repo) for nodejs, because ubuntu
+- name: Add Nodesource repo for nodejs
   # Add specified repository into sources list.
   apt_repository: repo='{{ item }} bionic main' state=present update_cache=yes
   with_items:
