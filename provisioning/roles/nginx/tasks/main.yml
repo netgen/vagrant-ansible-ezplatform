@@ -31,6 +31,11 @@
   notify: reload nginx
   tags: [nginx]
 
+- name: generate vhost configuration
+  template: src=vhost.conf.j2 dest="/etc/nginx/sites-available/{{ PROJECT_NAME }}.conf" owner=root group=root mode=0644
+  notify: reload nginx
+  tags: [nginx]
+
 - name: create vhost symlink
   file:
     src: "/etc/nginx/sites-available/{{ PROJECT_NAME }}.conf"
@@ -39,9 +44,3 @@
     group: root
     state: link
     force: yes
-
-- name: generate vhost configuration
-  template: src=vhost.conf.j2 dest="/etc/nginx/sites-available/{{ PROJECT_NAME }}.conf" owner=root group=root mode=0644
-  notify: reload nginx
-  tags: [nginx]
-
