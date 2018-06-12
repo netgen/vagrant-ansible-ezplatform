@@ -11,8 +11,8 @@
 
 - name: Set vagrant as the nginx user
   lineinfile:
-    dest: "/etc/nginx/nginx.conf"
-    regexp: '^user www-data;'
+    path: "/etc/nginx/nginx.conf"
+    regexp: '^user'
     line: 'user vagrant;'
     owner: root
     group: root
