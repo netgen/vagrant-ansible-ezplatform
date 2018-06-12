@@ -45,7 +45,3 @@
         group=root
         mode=0644
   notify: restart varnish
-
-#- name: Copy Varnish default VCL.
-#  template: src=default_vcl.j2 dest="{{ VARNISH_CONFIG_PATH }}/default.vcl" owner=root group=root mode=0644
-#  notify: restart varnish
