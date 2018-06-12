@@ -7,9 +7,8 @@ PROJECT_TIMEZONE: "Europe/Zagreb"
 HOST: "vagrant.local"
 
 # defaults file for mysql
-USERNAME: "ez"
-PASSWORD: "ez"
-DB_NAME: "ezplatform"
+USERNAME: "admin"
+PASSWORD: "admin"
 
 # We use eZ Publish specific VCL
 
