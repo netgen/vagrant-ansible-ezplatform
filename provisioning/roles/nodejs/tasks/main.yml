@@ -18,14 +18,3 @@
     - nodejs
   when: ansible_os_family == "Debian"
   tags: [nodejs, packages]
-
-- name: Install required node packages
-  npm:
-    name: "{{ item }}"
-    global: yes
-    state: latest
-  with_items:
-    - uglify-js
-    - uglifycss
-    - less
-  tags: [nodejs, packages]

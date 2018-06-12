@@ -1,11 +1,7 @@
-EzFind Solr
-=========
+Java
+====
 
-Copy the solr upstart script for ezfind sold
-
-Defaults that should be set as group/host variables:
-PROJECT_ROOT: "/var/www"
-
+Install the default JRE into the machine
 
 Example Playbook
 ----------------
@@ -14,7 +10,7 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - ezfind-solr
+         - java
 
 Author Information
 ------------------

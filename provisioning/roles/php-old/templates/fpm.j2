@@ -1,8 +1,0 @@
-;{{ ansible_managed }}
-
-{% if item.name %}
-[{{ item.name }}]
-{% endif %}
-{% for directive, value in item.iteritems() if directive != "name" and directive != "filename" and value != None %}
-  {{ directive }} = {{ value }}
-{% endfor %}

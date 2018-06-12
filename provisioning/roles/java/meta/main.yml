@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Srdjan Vranac
-  description: Setup solr upstart script for ezfind
+  description: Install the default JRE into the machine
   company: Code4Hire Kft.
   min_ansible_version: 1.5
   version: 0.1

@@ -11,10 +11,9 @@
     - yarn
     - varnish
     - php
-    - { role: composer, use_composer_no_dev: no, install_vendors: false }
+    - { role: composer }
     - { role: 'rabbitmq', tags: 'rabbitmq' }
     - { role: 'mysql', tags: 'mysql' }
-#    - { role: 'users', tags: 'users' }
     - { role: 'csync2', tags: 'csync2' }
 #    - { role: mailcatcher }
 

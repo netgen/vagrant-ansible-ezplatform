@@ -9,7 +9,3 @@ HOST: "vagrant.local"
 # defaults file for mysql
 USERNAME: "admin"
 PASSWORD: "admin"
-
-# We use eZ Publish specific VCL
-
-VARNISH_USE_DEFAULT_VCL: false
