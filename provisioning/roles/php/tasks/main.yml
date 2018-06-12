@@ -45,7 +45,7 @@
     owner: root
     group: root
     mode: 0644
-  notify: reload php-fpm
+  notify: restart php-fpm
 
 - name: Set PHP FPM emergency restart interval
   lineinfile:
@@ -55,7 +55,7 @@
     owner: root
     group: root
     mode: 0644
-  notify: reload php-fpm
+  notify: restart php-fpm
 
 - name: Set PHP FPM process control timeout
   lineinfile:
@@ -65,15 +65,15 @@
     owner: root
     group: root
     mode: 0644
-  notify: reload php-fpm
+  notify: restart php-fpm
 
 - name: Set up local configuration for CLI
   template: src=local.ini.cli.j2 dest="{{ php_cli_conf_d_path }}/99-local.ini" owner=root group=root mode=0644 force=yes
 
 - name: Set up local configuration for FPM
   template: src=local.ini.fpm.j2 dest="{{ php_fpm_conf_d_path }}/99-local.ini" owner=root group=root mode=0644 force=yes
-  notify: reload php-fpm
+  notify: restart php-fpm
 
 - name: Set up pool configuration
   template: src=www.conf.j2 dest={{ php_fpm_pool_d_path }}/www.conf owner=root group=root mode=0644 force=yes
-  notify: reload php-fpm
+  notify: restart php-fpm
