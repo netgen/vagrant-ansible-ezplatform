@@ -9,8 +9,8 @@
     repo: 'deb https://packagecloud.io/varnishcache/varnish41/debian/ stretch main'
     state: present
 
-- name: Install Varnish.
-  apt: name=varnish state=present
+- name: Install Varnish packages
+  apt: name="{{ item }}" state=present update_cache=yes
   with_items:
     - varnish
     - varnish-modules
