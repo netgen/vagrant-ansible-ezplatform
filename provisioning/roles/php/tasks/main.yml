@@ -24,7 +24,7 @@
   tags: [php, packages, xdebug, dev]
 
 - name: Disable XDebug
-  command: phpdismod xdebug
+  command: phpdismod -v ALL -s ALL xdebug
   ignore_errors: true
   when: ansible_os_family == "Debian"
 
