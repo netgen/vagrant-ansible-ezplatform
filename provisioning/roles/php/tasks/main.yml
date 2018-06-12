@@ -37,6 +37,35 @@
   action: service name="php{{ PROJECT_PHP_VERSION }}-fpm" state=started
   tags: [php, php_fpm]
 
+- name: Set PHP timezone for cli
+  lineinfile:
+    dest: "{{ php_cli_php_ini_path }}"
+    regexp: '^[; ]*date.timezone'
+    line: "date.timezone = '{{ PROJECT_TIMEZONE }}'"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart php-fpm
+
+- name: Set PHP timezone for cgi
+  lineinfile:
+    dest: "{{ php_cgi_php_ini_path }}"
+    regexp: '^[; ]*date.timezone'
+    line: "date.timezone = '{{ PROJECT_TIMEZONE }}'"
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Set PHP timezone for fpm
+  lineinfile:
+    dest: "{{ php_fpm_php_ini_path }}"
+    regexp: '^[; ]*date.timezone'
+    line: "date.timezone = '{{ PROJECT_TIMEZONE }}'"
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart php-fpm
+
 - name: Set PHP FPM emergency restart threshold
   lineinfile:
     dest: "{{ php_fpm_conf_path }}"

@@ -8,3 +8,8 @@ php_cli_conf_d_path: "/etc/php/{{ PROJECT_PHP_VERSION }}/cli/conf.d"
 php_fpm_conf_path: "/etc/php/{{ PROJECT_PHP_VERSION }}/fpm/php-fpm.conf"
 php_fpm_conf_d_path: "/etc/php/{{ PROJECT_PHP_VERSION }}/fpm/conf.d"
 php_fpm_pool_d_path: "/etc/php/{{ PROJECT_PHP_VERSION }}/fpm/pool.d"
+
+
+php_cli_php_ini_path: "/etc/php/{{ PROJECT_PHP_VERSION }}/cli/php.ini"
+php_cgi_php_ini_path: "/etc/php/{{ PROJECT_PHP_VERSION }}/cgi/php.ini"
+php_fpm_php_ini_path: "/etc/php/{{ PROJECT_PHP_VERSION }}/fpm/php.ini"
