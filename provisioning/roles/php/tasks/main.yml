@@ -16,6 +16,15 @@
   with_items: "{{ php_packages }}"
   tags: [php, packages]
 
+- name: Install the php-fpm specific libraries (APT)
+  apt: name="{{ item }}" state=present update_cache=yes
+  with_items: "{{ php_fpm_packages }}"
+  tags: [php, php_fpm, packages]
+
+- name: Ensure PHP FPM service is up
+  action: service name="php{{ PROJECT_PHP_VERSION }}-fpm" state=started
+  tags: [php, php_fpm]
+
 - name: Install xdebug
   apt: name="{{ item }}" state=present update_cache=yes
   # located in vars/main.yml
@@ -27,15 +36,7 @@
   command: phpdismod -v ALL -s ALL xdebug
   ignore_errors: true
   when: ansible_os_family == "Debian"
-
-- name: Install the php-fpm specific libraries (APT)
-  apt: name="{{ item }}" state=present update_cache=yes
-  with_items: "{{ php_fpm_packages }}"
-  tags: [php, php_fpm, packages]
-
-- name: Ensure PHP FPM service is up
-  action: service name="php{{ PROJECT_PHP_VERSION }}-fpm" state=started
-  tags: [php, php_fpm]
+  notify: restart php-fpm
 
 - name: Set PHP timezone for cli
   lineinfile:
