@@ -5,13 +5,13 @@
   apt: name="memcached" state=present update_cache=yes
   tags: [memcached,packages]
 
-- name: ensure memcached service is up
-  action: service name=memcached state=started
-  tags: [memcached,services]
-
 - name: memcached tuning
   template: src=memcached.conf.j2 dest=/etc/memcached.conf owner=root group=root mode=0644
   notify: restart memcached
+  tags: [memcached]
+
+- name: memcached-sess tuning
+  template: src=memcached-sess.conf.j2 dest=/etc/memcached-sess.conf owner=root group=root mode=0644
   tags: [memcached]
 
 - name: memcached-sess service setup
@@ -20,12 +20,12 @@
     - reload systemctl
   tags: [memcached]
 
-- name: memcached-sess tuning
-  template: src=memcached-sess.conf.j2 dest=/etc/memcached-sess.conf owner=root group=root mode=0644
-  tags: [memcached]
+- name: ensure memcached service is up
+  action: service name=memcached state=started enabled=yes
+  tags: [memcached,services]
 
 - name: ensure memcached-sess service is up
-  action: service name=memcached@sess state=started
+  action: service name=memcached@sess state=started enabled=yes
   tags: [memcached,services]
  
 
